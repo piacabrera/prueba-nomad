@@ -24,9 +24,6 @@ async function getAllProducts() {
     }
     return allProducts;
 }
-(async () => {
-  const products = await getAllProducts();
-  console.log(products);
-})();
+
 module.exports = { getAllProducts };
 
