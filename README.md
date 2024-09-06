@@ -2,6 +2,8 @@
 
 ## Para correr en local:
 
+Tener node version 18.20.2 o posterior 
+
 - Se debe crear un archivo ```.env ```con la variable ```PORT = 3000```
 - correr ```npm install```
 - correr ```node app.js```
