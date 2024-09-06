@@ -47,7 +47,7 @@
 
 
     quoteShippingButton.addEventListener("click", async () => {
-      shippingResult.textContent = 'Cauculando envío...';
+      shippingResult.textContent = 'Calculando envío...';
       try {
         const response = await fetch("/api/cart", {
           method: "POST",
