@@ -1,5 +1,11 @@
 # prueba-nomad
 
+## Para correr en local:
+
+- Se debe crear un archivo ```.env ```con la variable ```PORT = 3000```
+- correr ```npm install```
+- correr ```node app.js```
+
 ## Consideraciones:
 
 - Asumo que ```discount``` en el listado del request del enunciado es ```discountPercentage```y que ```productId``` es ```id``` (ya que así vienen del carrito aleatorio del API) 
