@@ -19,6 +19,7 @@
   "dependencies": {
     "axios": "^1.7.7",
     "body-parser": "^1.20.2",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "express-requests-logger": "^4.0.1"
   }
 }
