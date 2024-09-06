@@ -11,11 +11,12 @@ function findCartProducts(allProducts, cartItems) {
     }  
     const { title, stock, rating } = product;
     const realStock = Math.floor(stock / rating);
+    const totalDiscount = (item.quantity <= realStock) ? (item.discount * item.quantity) : (item.discount * realStock);
     const itemResult = {
       productId: item.productId,
       title,
       price: item.price,
-      totalDiscount: item.discount * item.quantity,
+      totalDiscount: totalDiscount,
       quantity: item.quantity,
       stock,
       rating,
