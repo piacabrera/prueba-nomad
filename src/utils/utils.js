@@ -2,7 +2,7 @@
 
 function findCartProducts(allProducts, cartItems) {
   return cartResult = cartItems.map((item) => {
-    const product = allProducts.find((product) => product.id.toString() === item.productId);
+    const product = allProducts.find((product) => product.id === item.id);
     if (!product) {
       return {
         ...item,
@@ -11,9 +11,9 @@ function findCartProducts(allProducts, cartItems) {
     }  
     const { title, stock, rating } = product;
     const realStock = Math.floor(stock / rating);
-    const totalDiscount = (item.quantity <= realStock) ? (item.discount * item.quantity * item.price) : (item.discount * realStock * item.price);
+    const totalDiscount = parseFloat((item.quantity <= realStock ? item.discountPercentage/100 * item.quantity * item.price : item.discountPercentage/100 * realStock * item.price).toFixed(2));
     const itemResult = {
-      productId: item.productId,
+      productId: item.id,
       title,
       price: item.price,
       totalDiscount: totalDiscount,
