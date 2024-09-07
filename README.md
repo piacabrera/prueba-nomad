@@ -4,9 +4,10 @@ El código se encuentra en el repo ```https://github.com/piacabrera/prueba-nomad
 ## Para correr en local:
 
 Tener node version 18.20.2 o posterior 
-- Se debe crear un archivo ```.env ```con la variable ```PORT = 3000```
-- correr ```npm install```
-- correr ```node index.js```
+- Se debe crear un archivo ```.env ```con la variable ```PORT = 3000``` en la raíz
+- Entrar a la carpeta ```backend```
+- Correr desde ```/backend ``` ```npm run build-frontend```
+-  Correr desde ```/backend ``` ```npm start```
 
 ## Consideraciones:
 
