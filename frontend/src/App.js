@@ -1,23 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import CartView from './components/CartView';
+import Checkout from './components/Checkout';
+import './styles.css';
 
 function App() {
+  const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || null);
+  const [view, setView] = useState('cart'); // 'cart' or 'checkout'
+
+  const fetchRandomCart = async () => {
+    try {
+      const response = await fetch('http://dummyjson.com/carts');
+      const allCarts = await response.json();
+      const randomCart = allCarts.carts[Math.floor(Math.random() * allCarts.carts.length)];
+      localStorage.setItem('cart', JSON.stringify(randomCart));
+      setCart(randomCart);
+    } catch (error) {
+      console.error("Error al obtener carrito:", error);
+    }
+  };
+
+  const clearCart = () => {
+    localStorage.removeItem('cart');
+    setCart(null);
+    setView('cart');
+  };
+
+  const goToCheckout = () => {
+    setView('checkout');
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mt-5">
+      {view === 'cart' ? (
+        <CartView 
+          cart={cart} 
+          fetchRandomCart={fetchRandomCart} 
+          goToCheckout={goToCheckout} 
+        />
+      ) : (
+        <Checkout cart={cart} clearCart={clearCart} goBack={() => setView('cart')} />
+      )}
     </div>
   );
 }
