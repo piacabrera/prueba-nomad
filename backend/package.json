@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "frontend": "npm run start --prefix ../frontend",
+    "build-frontend": "npm run build --prefix ../frontend",
+    "dev": "concurrently \"npm run server\" \"npm run frontend\"",
+    "server": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +27,8 @@
     "express": "^4.19.2",
     "express-requests-logger": "^4.0.1",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }
