@@ -14,7 +14,11 @@ app.use(bodyParser.json());
 
 app.use('/api', apiRoutes);
 
-app.use(express.static('public'));
+app.use(express.static('../frontend/build'));
+
+app.get('*', (req, res) => {
+  res.sendFile('../frontend/build', 'index.html');
+});
 
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en http://localhost:${PORT}`);
